@@ -12,6 +12,7 @@ SURNAMES_LEN = len(surnames_list) - 1
 MAX_DATE = '01/01/2002'
 MIN_DATE = '01/01/1970'
 DATE_FORMAT = '%d/%m/%Y'
+emplN = []
 
 def generate_name():
 	#Random between 0 and the number of names
@@ -34,8 +35,13 @@ def generate_gender():
 	gender = ['M', 'F']
 	return "'" + gender[rd.randint(0, 1)] + "'"
 
-def generate_deptNo(num):
-	return 'NULL'
+def generate_deptNo(num, x):
+	deptNo = rd.randint(1, num)
+	emplN.insert(x, deptNo) 
+	return deptNo
+
+def return_empl():
+	return emplN
 
 def generate_employees(num):
 	insert = ''
@@ -49,7 +55,7 @@ def generate_employees(num):
 			generate_DOB()                +', '+
 			generate_gender()             +', '+
 			"'position#" + str(x + 1)     +"', "+
-			generate_deptNo(num) +');'+
+			str(generate_deptNo((num), x)) +');'+
 			'\n')
 
 	return insert
