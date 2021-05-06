@@ -35,27 +35,31 @@ def generate_gender():
 	gender = ['M', 'F']
 	return "'" + gender[rd.randint(0, 1)] + "'"
 
-def generate_deptNo(num, x):
+def generate_deptNo(num):
 	deptNo = rd.randint(1, num)
-	emplN.insert(x, deptNo) 
 	return deptNo
 
 def return_empl():
 	return emplN
 
+def generate_address():
+	opt = ['CLL', 'CRA']
+	return "'" + opt[rd.randint(0,1)] + " " + str(rd.randint(1,125)) + " N° " + str(rd.randint(1,150)) + "-" + str(rd.randint(1,150))
+
+
+
 def generate_employees(num):
 	insert = ''
 
 	for x in range(num):
-		insert += ('INSERT INTO Employee VALUES ('+
+		insert += ('INSERT INTO Employee (empNo, fName, lName, address, DOB, sex, position) VALUES ('+
 			str(x + 1)                    +', '+
 			generate_name()               +', '+
 			generate_surname()            +', '+
-			"'adress#" + str(x + 1)       +"', "+
+			generate_address()      +"', "+
 			generate_DOB()                +', '+
 			generate_gender()             +', '+
-			"'position#" + str(x + 1)     +"', "+
-			str(generate_deptNo((num), x)) +');'+
+			"'position#" + str(x + 1)     +"');"+
 			'\n')
 
 	return insert

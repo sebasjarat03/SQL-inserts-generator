@@ -1,16 +1,28 @@
 import employee_generator
+import department_generator
+import random as rd
 
 
-emplN = employee_generator.return_empl()
+def generate_emp(num):
+	empNo = rd.randint(1, num)
+	return empNo
 
 def generate_updates(num):
 	update = ''
-
-	for x in range(num):
-		update += ('UPDATE department SET mgrEmpNo ='+ 
-            str(x+1)   + ' WHERE deptNo = ' 
-            + str(emplN[x])
+	emplN = department_generator.MANAGER_EMPLOYEES
+	
+	for x in range(6):
+		update += ('UPDATE employee SET deptNo ='+ 
+            str(x+1)   + ' WHERE empNo = ' 
+            + str(emplN[x]+1)
 			 +';'+
+			'\n')
+	
+
+	for x in range(6,20):
+		update += ('UPDATE employee SET deptNo ='+ 
+            str(employee_generator.generate_deptNo(6)) + ' WHERE empNo = ' 
+            + str(emplN[x] + 1) +';'+
 			'\n')
 
 	return update

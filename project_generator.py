@@ -6,8 +6,8 @@ def generate_project(num):
 	for x in range(num):
 		insert += ('INSERT INTO Project VALUES ('+
 			str(x + 1)                        +', '+
-			"'superCreativeName#" + str(x + 1)+"', "+
-			str(rd.randint(1, num)) +');'+
+			"'Project#" + str(x + 1)+"', "+
+			str(rd.randint(1, 6)) +');'+
 			'\n')
 
 	return insert
