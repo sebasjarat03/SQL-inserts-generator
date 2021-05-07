@@ -1,7 +1,7 @@
 import sys;
 import csv;
 import random as rd
-import time
+import datetime
 
 names_list = list(csv.reader(open('data/names.csv','r')))
 surnames_list = list(csv.reader(open('data/surnames.csv','r')))
@@ -9,9 +9,6 @@ surnames_list = list(csv.reader(open('data/surnames.csv','r')))
 NAMES_LEN = len(names_list) - 1
 SURNAMES_LEN = len(surnames_list) - 1
 
-MAX_DATE = '01/01/2002'
-MIN_DATE = '01/01/1970'
-DATE_FORMAT = '%d/%m/%Y'
 emplN = []
 
 def generate_name():
@@ -23,13 +20,16 @@ def generate_surname():
 
 def generate_DOB():
 	#Generates a random date between two given
+	
+	end_date = datetime.date(2002, 1, 1)
+	start_date = datetime.date(1940, 2, 1)
 
-    min_time = time.mktime(time.strptime(MIN_DATE, DATE_FORMAT))
-    max_time = time.mktime(time.strptime(MAX_DATE, DATE_FORMAT))
+	time_between_dates = end_date - start_date
+	days_between_dates = time_between_dates.days
+	random_number_of_days = rd.randrange(days_between_dates)
+	random_date = start_date + datetime.timedelta(days=random_number_of_days)
 
-    ptime = min_time + rd.random() * (max_time - min_time)
-
-    return "'" + time.strftime(DATE_FORMAT, time.localtime(ptime))+ "'"
+	return "'" + str(random_date)+ "'"
 
 def generate_gender():
 	gender = ['M', 'F']
