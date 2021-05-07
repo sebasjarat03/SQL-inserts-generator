@@ -22,7 +22,7 @@ def generate_DOB():
 	#Generates a random date between two given
 	
 	end_date = datetime.date(2002, 1, 1)
-	start_date = datetime.date(1940, 2, 1)
+	start_date = datetime.date(1950, 1, 1)
 
 	time_between_dates = end_date - start_date
 	days_between_dates = time_between_dates.days
