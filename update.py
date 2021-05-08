@@ -19,7 +19,7 @@ def generate_updates(num):
 			'\n')
 	
 
-	for x in range(6,20):
+	for x in range(6,30):
 		update += ('UPDATE employee SET deptNo ='+ 
             str(employee_generator.generate_deptNo(6)) + ' WHERE empNo = ' 
             + str(emplN[x] + 1) +';'+
