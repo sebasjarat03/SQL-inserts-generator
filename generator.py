@@ -6,7 +6,7 @@ import worksOn_generator
 import update
 
 
-NUM_ROWS = 20
+NUM_ROWS = 30
 
 employees_insert = employee_generator.generate_employees(NUM_ROWS)
 department_insert = department_generator.generate_department(NUM_ROWS)

@@ -29,7 +29,7 @@ def generate_DOB():
 	random_number_of_days = rd.randrange(days_between_dates)
 	random_date = start_date + datetime.timedelta(days=random_number_of_days)
 
-	return "'" + str(random_date)+ "'"
+	return "'" + str(random_date.strftime("%d/%m/%Y"))+ "'"
 
 def generate_gender():
 	gender = ['M', 'F']
